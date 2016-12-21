@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Popover: Close other popovers when triggerd</title>
+    <meta charset="utf-8" />
+    <link href="Content/css/bootstrap.css" rel="stylesheet" />
+</head>
+<body ng-app="popoverDemo">
+    <table ng-controller="mainCtrl as vm">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="item in vm.items">
+            <td>{{item.id}}</td>
+            <td>
+                <div uib-popover-template="'template'" popover-is-open="vm.myPopover.isOpen[$index]" ng-click="vm.myPopover.open($index)"  popover-append-to-body="true" popover-placement="right">
+                    {{item.name}}
+                </div>
+                <script type="text/ng-template" id="template">
+                    <div class="form-group">
+                        {{item.description}}
+                    </div>
+                </script>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <script src="Scripts/jquery.js"></script>
+    <script src="Scripts/angular.js"></script>
+    <script src="Scripts/angular-ui/ui-bootstrap.js"></script>
+    <script src="Scripts/angular-ui/ui-bootstrap-tpls.js"></script>
+    <script src="Scripts/bootstrap.js"></script>
+    <script src="Scripts/app/app.js"></script>
+    <script src="Scripts/app/mainCtrl.js"></script>
+</body>
+</html>
